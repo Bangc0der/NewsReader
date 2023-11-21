@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:newsreader/Settings.dart';
 class HomeScreen extends StatefulWidget{
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool showMore= false;
   
-  int _selectedIndex = 0;
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context){
+    int _selectedIndex = 0;
     void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
@@ -16,15 +26,22 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = <Widget>[
    ListView(
         children: [
+        const Text("   Top Categories",
+          style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold)),
         Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
             children:[ 
               const SizedBox(height: 5,), 
+              new GestureDetector(
+                onTap: (){
+                  print("Container clicked");
+                },
+                child:
               Container(
-                height: 210,
-                width: 185,
+                height: 195,
+                width: 170,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   image: DecorationImage(
@@ -34,8 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: const Text("Meet new\npeople",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-              ),
+                child: const Text("Business",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+              ),),
               const SizedBox(height: 5),
               ]),
         
@@ -44,6 +61,77 @@ class _HomeScreenState extends State<HomeScreen> {
           children:
           [
                 const SizedBox(height: 5,width:10),
+                new GestureDetector(
+                  onTap: (){
+                    print("Container clicked");
+                  },
+                  child:
+                Container(
+                  height: 97,
+                  width: 170,
+
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    image: DecorationImage(
+                    colorFilter: ColorFilter.mode(Color.fromARGB(255, 0, 0, 0).withOpacity(0.7), BlendMode.dstATop),
+                    image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text("Sports",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),),),
+                const SizedBox(height: 5,width:10),
+                new GestureDetector(
+                  onTap: (){
+                    print("Container clicked");
+                  },
+                  child:
+                Container(
+                  height: 97,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    image: DecorationImage(colorFilter: ColorFilter.mode(Color.fromARGB(255, 0, 0, 0).withOpacity(0.7), BlendMode.dstATop),
+                    image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
+                  ),
+                  alignment: Alignment.center,
+                  child:const Text("LifeStyle",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                  ),),
+                ])
+        ],
+      ),
+      const SizedBox(height: 5,),
+      
+      Visibility(
+              visible: !showMore, 
+              child:
+              TextButton(
+                  style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.all(Colors.transparent),),
+                  onPressed: () {
+                    setState(() {
+                      showMore = !showMore; // Toggle the value of showMore
+                    });
+                  },
+                  child: const Text("➕", style: TextStyle(color: Color.fromARGB(255, 214, 104, 236))),
+                ),
+        ),
+
+      //Test Row
+
+      Visibility(
+              visible: showMore, 
+              child:
+              
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children:
+          [     
+                new GestureDetector(
+                onTap: (){
+                  print("Container clicked");
+                },
+                child:
                 Container(
                   height: 97,
                   width: 170,
@@ -54,8 +142,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
                   ),
                   alignment: Alignment.center,
-                  child: const Text("Top meeting\nplaces",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),),
-                const SizedBox(height: 15,width:10),
+                  child: const Text("Entertainment",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),),
+                ),
+                new GestureDetector(
+                onTap: (){
+                  print("Container clicked");
+                },
+                child:
                 Container(
                   height: 97,
                   width: 170,
@@ -65,22 +158,79 @@ class _HomeScreenState extends State<HomeScreen> {
                     image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
                   ),
                   alignment: Alignment.center,
-                  child:const Text("New places to\nexplore",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                  child:const Text("Politics",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                  ),),
+                ]),
+        const SizedBox(height: 10,), 
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children:
+          [
+              new GestureDetector(
+                onTap: (){
+                  print("Container clicked");
+                },
+                child:
+                Container(
+                  height: 97,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    image: DecorationImage(
+                    colorFilter: ColorFilter.mode(Color.fromARGB(255, 0, 0, 0).withOpacity(0.7), BlendMode.dstATop),
+                    image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
                   ),
-                ])
-        ],
-      ),
+                  alignment: Alignment.center,
+                  child: const Text("International News",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),),
+              ),
+              new GestureDetector(
+                onTap: (){
+                  print("Container clicked");
+                },
+                child:
+                Container(
+                  height: 97,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    image: DecorationImage(colorFilter: ColorFilter.mode(Color.fromARGB(255, 0, 0, 0).withOpacity(0.7), BlendMode.dstATop),
+                    image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
+                  ),
+                  alignment: Alignment.center,
+                  child:const Text("LifeStyle",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                  ),),
+                ]),
+        TextButton(
+              style: ButtonStyle(
+                                overlayColor: MaterialStateProperty.all(Colors.transparent),),
+                  onPressed: () {
+                    setState(() {
+                      showMore = !showMore; // Toggle the value of showMore
+                    });
+                  },
+                  child: const Text("➖", style: TextStyle(color: Color.fromARGB(255, 214, 104, 236))),
+                ), 
+                ],
+              )
+            ),
+
+      
+      //Add a few more categories here, use a visibile widget to show more categories if needed.
         
         const SizedBox(height: 15,),
         //Use mediaqueries here to adjust for different screen sizes in use. Change when need to modify.
         Row(children: [
           const SizedBox(width:20),
-          const Text("Public Events",
+          const Text("Trending",
           style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold)),
           const SizedBox(width: 140,),//use media query, prob modify later if need be
           const Text("Sort",style: TextStyle(fontSize: 22),),
           const SizedBox(width: 3,),
-          IconButton(onPressed:(){print("sorted");},icon:Icon(Icons.sort),),//cant make constant
+          IconButton(
+            onPressed:(){
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => Settings()),
+            );
+            print("sorted");},icon:Icon(Icons.sort),),//cant make constant
         ],),
         const SizedBox(height: 15,),
 
@@ -203,12 +353,14 @@ class _HomeScreenState extends State<HomeScreen> {
         
         const SizedBox(height: 20,),
         
+        
         Container(//use mediaqueries if required
                   height: 230,
                   width: 370,
                   decoration: const BoxDecoration(
                     borderRadius:  BorderRadius.all(Radius.circular(15)),
                     image: DecorationImage(image: AssetImage("images/random.jpg"),fit: BoxFit.cover,),
+                    color: Colors.black26 ,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey,
@@ -341,20 +493,65 @@ class _HomeScreenState extends State<HomeScreen> {
 ];
 
 
-  @override
-  Widget build(BuildContext context){
-    
     return  Scaffold(
+      key: UniqueKey(),
       backgroundColor: Colors.white,
       appBar:AppBar(
         elevation: 0,
         leading: IconButton(onPressed:(){Navigator.pop(context);} ,icon:const Icon(Icons.arrow_left,size:40,color:Color.fromARGB(254, 128, 126, 126),)),
-        title:const Text('Tag',style: TextStyle(color:Color.fromARGB(255, 214, 104, 236),fontWeight: FontWeight.bold,fontSize: 23),),
-        centerTitle: true,
+        title:Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const Text(
+          "News",
+          style:
+          TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+        ),
+        const Text(
+          "Flash",
+          style: TextStyle(color: Color.fromARGB(255, 214, 104, 236), fontWeight: FontWeight.w600),
+        )
+      ],
+    ),centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
 
       body: _pages.elementAt(_selectedIndex),
+
+
+      //drawer doesnt work
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+
 
       //Bottom Navigation Bar:
       bottomNavigationBar: BottomNavigationBar(
@@ -403,6 +600,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
- 
+ /*
 
+class  Newstile extends StatelessWidget {
+  const ({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+*/
