@@ -2,23 +2,23 @@
 import 'package:flutter/material.dart';
 
 
-class Settings extends StatefulWidget{
+class artview extends StatefulWidget{
   @override
-  State<Settings> createState() => _SettingsState();
+  State<artview> createState() => _artviewState();
 }
 
-class _SettingsState extends State<Settings> {
+class _artviewState extends State<artview> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: Text(""),
       ),
       body: const Center(
         child: Column(
           children: [
-            Text("Settings"),
-            Text("Settings"),]))
+
+          ]))
 
     );
   }
