@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsreader/Settings.dart';
+import 'package:newsreader/views/Settings.dart';
 class HomeScreen extends StatefulWidget{
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -14,16 +14,18 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context){
-    int _selectedIndex = 0;
+  int _selectedIndex = 0;
     void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
       });
     }
 
-  final List<Widget> _pages = <Widget>[
+  @override
+  Widget build(BuildContext context){
+    
+
+  List<Widget> _pages = <Widget>[
    ListView(
         children: [
         const Text("   Top Categories",
@@ -494,7 +496,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     return  Scaffold(
-      key: UniqueKey(),
+      //key: UniqueKey(),
       backgroundColor: Colors.white,
       appBar:AppBar(
         elevation: 0,
@@ -597,6 +599,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
 
 
 

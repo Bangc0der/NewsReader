@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsreader/HomeScreen.dart';
+import 'package:newsreader/views/HomeScreen.dart';
+import 'package:newsreader/views/maybehome.dart';
 
 void main() {
   runApp(Myapp());
@@ -14,8 +15,13 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      title:"Find Flames",
-      home: HomeScreen());
+      title:"Flash Me",
+      debugShowCheckedModeBanner: false,//just to remove debug banner
+      home: MHomeScreen(),
+      theme:ThemeData(  //change theme color here
+        primaryColor: Colors.white,
+      )
+      );
   }
 }
 /*
